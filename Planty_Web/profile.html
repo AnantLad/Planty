@@ -1,0 +1,147 @@
+<!-- profile.html -->
+ <html>
+    <head></head>
+    <body class="bgimage" style=" background-image: url('image/home.jpg')">
+
+<section class="profile-page">
+    <h1>User Profile</h1>
+  
+    <form class="profile-form">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Enter full name" />
+  
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter email" />
+  
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter phone number" />
+  
+      <label for="address">Address</label>
+      <textarea id="address" placeholder="Enter address"></textarea>
+
+      <label for="city">City</label>
+    <input type="text" id="city" placeholder="City" />
+
+    <label for="state">State</label>
+    <input type="text" id="state" placeholder="State" />
+
+    <label for="Pin code">Pin Code</label>
+    <input type="text" id="pincode" placeholder="Pin Code" />
+  
+      <button type="submit">Save</button>
+      <a href="plant.html" class="back-link">Back to Home </a>
+    </form>
+  </section>
+  <style>
+    .bgimage{
+  background-image: url('your-image.jpg'); 
+  background-size: cover;
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  
+  padding: 60px;
+  color: #ffffff;                      
+}
+
+    .profile-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px;
+  background: #f9fbe7;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.profile-page h1 {
+  text-align: center;
+  color: #33691e;
+  margin-bottom: 30px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-form label {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.profile-form input,
+.profile-form textarea {
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 5px;
+  border: 1px solid #c5e1a5;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.profile-form button ,a {
+  margin-top: 25px;
+  padding: 14px;
+  text-align: center;
+  background: linear-gradient(135deg, #43a047, #1b5e20);
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.profile-form button , a:hover {
+  background: linear-gradient(135deg, #66bb6a, #2e7d32);
+}
+  </style>
+  <script>
+    document.getElementById('profile-link').addEventListener('click', function (e) {
+      e.preventDefault();
+  
+      fetch('profile.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('main-content').innerHTML = data;
+        })
+        .catch(error => {
+          console.error("Error loading profile:", error);
+        });
+    });
+    
+  document.querySelector(".profile-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+      fullName: document.getElementById("fullname").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      address: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      state: document.getElementById("state").value,
+      pincode: document.getElementById("pincode").value
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      alert(result.message || "Profile saved!");
+    } catch (error) {
+      alert("Failed to submit profile");
+    }
+  });
+
+
+  </script>
+  
+</body>
+  </html>

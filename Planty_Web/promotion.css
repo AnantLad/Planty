@@ -1,0 +1,176 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.swiper-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    z-index: 10;
+    margin: 0;
+}
+
+.cta-button {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #32a852;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #28a745;
+}
+
+/* Container for Other Elements 
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.image-item {
+    text-align: center;
+    width: 22%;
+    margin-bottom: 20px;
+}
+
+.circular-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+*/
+@media (min-width: 1200px) {
+    .swiper-container {
+        height: 450px;
+    }
+
+    .cta-button {
+        font-size: 1.2rem;
+    }
+
+    .image-item {
+        width: 22%;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .swiper-container {
+        height: 400px;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
+
+    .image-item {
+        width: 30%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .swiper-container {
+        height: 350px;
+    }
+
+    .swiper-slide h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-item {
+        width: 45%;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .swiper-container {
+        height: 250px;
+    }
+
+    .swiper-slide h2 {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 0.8rem;
+    }
+
+    .image-item {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+}
